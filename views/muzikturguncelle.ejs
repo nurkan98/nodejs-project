@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <base href="/">
+    <title>Müzik Türü Güncelle</title>
+    <link rel="stylesheet" type="text/css" href="public/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a href="/" class="navbar-item">
+            Anasayfa
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Sanatçı</a>
+            <div class="navbar-dropdown">
+              <a href="sanatcilistele" class="navbar-item">
+                Sanatçıları Listele
+              </a>
+              <a href="sanatciekle" class="navbar-item">
+                Sanatçı Ekle
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Albüm</a>
+            <div class="navbar-dropdown">
+              <a href="albumlistele" class="navbar-item">
+                Albümleri Listele
+              </a>
+              <a href="albumekle" class="navbar-item">
+              Albüm Ekle
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Müzik Türleri</a>
+            <div class="navbar-dropdown">
+              <a href="muzikturlistele" class="navbar-item">
+                Müzik Türleri Listele
+              </a>
+              <a href="muzikturekle" class="navbar-item">
+                Müzik Türü Ekle
+              </a>
+            </div>
+          </div>      
+        </div>
+      </div>
+    </nav>
+    <hr>
+    <div class="container">
+      <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+            <ul>
+            <li><a href="#">Müzik Türleri</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Müzik Türü Güncelle</a></li>
+          </ul>
+        </nav>
+        <form method="post" action="muzikturguncelle/<%=muziktur[0].MuzikTurId%>">
+          <table align="center" class="table is-striped">
+            <tr>
+              <td style="font-weight:bold">Müzik Türü:</td>
+              <td><input required value="<%=muziktur[0].MuzikTur%>" type="text" name="muziktur" class="input"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input type="submit" value="Müzik Tür Güncelle" class="button is-warning"></td>
+            </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+</html>

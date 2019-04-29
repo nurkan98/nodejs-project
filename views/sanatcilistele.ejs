@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Sanatçıları Listele</title>
+    <link rel="stylesheet" type="text/css" href="public/css/bulma.min.css">
+    <script>
+      function sanatcisil(id){
+        var karar=confirm("Silmek İstediğinize Emin Misiniz ?");
+        if(karar==true){
+          window.location='sanatcisil/'+id;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a href="/" class="navbar-item">
+            Anasayfa
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Sanatçı</a>
+            <div class="navbar-dropdown">
+              <a href="sanatcilistele" class="navbar-item">
+                Sanatçıları Listele
+              </a>
+              <a href="sanatciekle" class="navbar-item">
+                Sanatçı Ekle
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Albüm</a>
+            <div class="navbar-dropdown">
+              <a href="albumlistele" class="navbar-item">
+                Albümleri Listele
+              </a>
+              <a href="albumekle" class="navbar-item">
+              Albüm Ekle
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Müzik Türleri</a>
+            <div class="navbar-dropdown">
+              <a href="muzikturlistele" class="navbar-item">
+                Müzik Türleri Listele
+              </a>
+              <a href="muzikturekle" class="navbar-item">
+                Müzik Türü Ekle
+              </a>
+            </div>
+          </div>      
+        </div>
+      </div>
+    </nav>
+    <hr>
+    <div class="container">
+      <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+            <ul>
+            <li><a href="#">Sanatçılar</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Sanatçıları Listeliyorsunuz</a></li>
+          </ul>
+        </nav>
+      <table align="center" class="table is-bordered is-striped">
+        <tr>
+            <th>Sanatçı No</th>
+            <th>Sanatçı Adı</th>
+            <th>Sanatçı Yaşıyor mu</th>
+            <th>Sanatçı Doğum Tarihi</th>
+            <th>Sanatçı Eklenme Tarihi</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+        <% sanatci.forEach(function(data){ 
+          var sanatcidurum;
+          if(data.SanatciYasiyormu==0){sanatcidurum='Hayır';}
+          else{sanatcidurum='Evet';}
+        %>
+        <tr>
+          <td><%=data.SanatciId%></td>
+          <td><%=data.SanatciAdi%></td>
+          <td><%=sanatcidurum%></td>
+          <td><%= moment(data.SanatciDogumTarihi).format( 'DD.MM.YYYY') %></td>
+          <td><%=moment(data.EklenmeTarihi).format('DD.MM.YYYY')%></td>
+          <td><a href="sanatciguncelle/<%=data.SanatciId%>" class="button is-warning">Güncelle</a></td>
+          <td><a onclick="sanatcisil('<%=data.SanatciId%>')" class="button is-danger">Sil</a></td>
+
+        </tr>  
+        <% }) %>
+
+      </table>
+    </div>
+  </body>
+</html>
